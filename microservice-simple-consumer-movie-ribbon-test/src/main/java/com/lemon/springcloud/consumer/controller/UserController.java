@@ -25,6 +25,8 @@ public class UserController {
     @GetMapping("/list-all")
     public List<User> listAll(){
 
+        // 做个测试  添加一个注解
+
         // 当服务器端返回数据为list的时候，客户端接收到的是linkedhashmap  可以通过对象数组形式接受
         //再转化为list，然后操作里面的数据  否则会抛异常
 
