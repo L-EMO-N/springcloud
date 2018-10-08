@@ -1,7 +1,5 @@
-package com.lemon.springcloud.user.entity;
+package com.lemon.springcloud.consumer.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -9,27 +7,10 @@ import java.math.BigDecimal;
  * <p>Company:</p>
  *
  * @author luolin
- * @date 2018/7/12
+ * @date 2018/10/8
  */
+public class User {
 
-@Table
-@Entity
-public class User  implements Serializable{
-    private static final long serialVersionUID = 1246607714809373341L;
-
-    public User(Long id , String username){
-        super();
-        this.id = id;
-        this.username = username;
-    }
-
-
-    public User() {
-        super();
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;
@@ -39,6 +20,7 @@ public class User  implements Serializable{
     private String name;
 
     private BigDecimal balance;
+
 
 
     public Long getId() {
@@ -80,4 +62,19 @@ public class User  implements Serializable{
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
+
+
+
 }

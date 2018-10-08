@@ -1,9 +1,13 @@
 package com.lemon.springcloud.user.controller;
 
+import com.google.common.collect.Lists;
 import com.lemon.springcloud.user.dao.UserDao;
 import com.lemon.springcloud.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>Description: </p>
@@ -34,6 +38,18 @@ public class UserController {
     @GetMapping("/test-user")
     public User getUser(User user) {
         return user;
+    }
+
+    @GetMapping("/list-all")
+    public List<User> listAll(){
+        ArrayList<User> list = Lists.newArrayList();
+        User user = new User(1L,"张三");
+        User user2 = new User(2L,"李四");
+        User user3 = new User(3L,"王五");
+        list.add(user);
+        list.add(user2);
+        list.add(user3);
+        return  list;
     }
 
 }
