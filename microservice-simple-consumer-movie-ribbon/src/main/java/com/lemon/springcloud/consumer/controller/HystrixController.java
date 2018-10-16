@@ -24,7 +24,7 @@ public class HystrixController {
     @GetMapping("/user/{id}")
     @HystrixCommand(fallbackMethod = "getUserByIdFallback")
     public User getUserById(@PathVariable  Long id){
-        return restTemplate.getForObject("http://microservice-simple-provider-user/provider/user/getUserById//"+id,User.class);
+        return restTemplate.getForObject("http://microservice-simple-provider-user/provider/user/getUserById/"+id,User.class);
     }
 
     public User getUserByIdFallback( Long id){

@@ -1,6 +1,7 @@
 package com.lemon.springcloud.consumer.feign;
 
 import com.lemon.springcloud.consumer.entity.User;
+import com.lemon.springcloud.consumer.hystrixfallback.HystrixFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,18 +12,18 @@ import org.springframework.web.bind.annotation.*;
  * @author luolin
  * @date 2018/10/4
  */
-@FeignClient("microservice-simple-provider-user")
-@RequestMapping("/provider/user")
+@FeignClient(name = "microservice-simple-provider-user",fallback = HystrixFallback.class)
+//@RequestMapping("/provider/user")  用hystrix时不能使用这个注解
 public interface UserFeignClient {
-    @GetMapping("/getUserById/{id}")
+    @GetMapping("/provider/user/getUserById/{id}")
     public User findById(@PathVariable("id")  Long id);
 
 
-    @PostMapping("/user")
+    @PostMapping("/provider/user/user")
     public User postUser( User user);
 
 
-    @GetMapping("/test-user")
+    @GetMapping("/provider/user/test-user")
     public User getUser(User user);
 
 }
