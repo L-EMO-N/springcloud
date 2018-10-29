@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: microservice-hystrix-turbine
+server:
+  port: 8031
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+turbine:
+  aggregator:
+#    clusterConfig: MICOSERVICE-COSUMER-MOVIE-RIBBON,MICROSERVICE-SIMPLE-PROVIDER-USER
+    clusterConfig: default
+#  appConfig: micoservice-cosumer-movie-ribbon,microservice-simple-provider-user
+  appConfig: micoservice-cosumer-movie-ribbon,micoservice-cosumer-movie-feign
+  cluster-name-expression: "'default'"
